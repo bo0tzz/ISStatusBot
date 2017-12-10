@@ -31,7 +31,7 @@ public class PeopleCommand implements CommandHandler {
                     registry.getMain().getTelegramBot().perform(
                                     SendText.builder()
                                             .chatId(command.getChat().getChatId())
-                                            .text("There are currently %d people in the ISS. " + people.toString())
+                                            .text(String.format("There are currently %d people in the ISS. ", issPeople.getNumber()  ) + people.toString())
                                             .build());
                         }
                 ).build().perform();
