@@ -33,6 +33,11 @@ public class LocationCommand implements CommandHandler {
 
     @Override
     public boolean test(TextMessageEvent event, Command command) {
-        return (command.isMentioned() || command.getChat().getType() == ChatType.PRIVATE) && command.getBaseCommand().equalsIgnoreCase(commandName);
+        if ((command.isMentioned() || event.getMessage().getChat().getType() == ChatType.PRIVATE) && command.getBaseCommand().equalsIgnoreCase(commandName)) {
+            onCommand(event, command);
+            return true;
+        }
+
+        return false;
     }
 }
