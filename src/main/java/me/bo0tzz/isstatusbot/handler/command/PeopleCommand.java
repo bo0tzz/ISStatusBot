@@ -19,11 +19,16 @@ public class PeopleCommand implements CommandHandler {
 
     @Override
     public void onCommand(TextMessageEvent textMessageEvent, Command command) {
+        System.out.println("Command received: " + command.getBaseMessage().getContent());
+        System.out.println("Command isMentioned: " + command.isMentioned());
+        System.out.println("Chat type: " + command.getChat().getType());
         ISSPeopleRequest.builder()
                 .callback(issPeople -> {
-                            StringBuilder people = new StringBuilder("They are:\n");
-                            issPeople.getPeople().forEach(person -> people.append(String.format("%s\n", person.getName())));
-                            registry.getMain().getTelegramBot().perform(
+                    System.out.println("Started callback for ISSPeopleRequest");
+                    StringBuilder people = new StringBuilder("They are:\n");
+                    issPeople.getPeople().forEach(person -> people.append(String.format("%s\n", person.getName())));
+                    System.out.println("Output is " + people.toString());
+                    registry.getMain().getTelegramBot().perform(
                                     SendText.builder()
                                             .chatId(command.getChat().getChatId())
                                             .text("There are currently %d people in the ISS. " + people.toString())
