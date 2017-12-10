@@ -38,7 +38,7 @@ public class LocationMessageEventHandler implements EventHandler<LocationMessage
                     String formattedTime = Instant.ofEpochSecond(pass.getRisetime())
                             .atZone(timeZone)
                             .format(formatter);
-                    String out = String.format("The next pass by the ISS at your location will be at %s and last for %02d:%02d",
+                    String out = String.format("The next pass by the ISS at your location will be at %s and last for %02d minutes and %02d seconds.",
                             formattedTime,
                             pass.getDuration() / 60,
                             pass.getDuration() % 60);
