@@ -1,5 +1,6 @@
 package me.bo0tzz.isstatusbot.handler.command;
 
+import com.jtelegram.api.chat.ChatType;
 import com.jtelegram.api.commands.Command;
 import com.jtelegram.api.commands.CommandHandler;
 import com.jtelegram.api.events.message.TextMessageEvent;
@@ -35,6 +36,6 @@ public class PeopleCommand implements CommandHandler {
 
     @Override
     public boolean test(TextMessageEvent event, Command command) {
-        return command.isMentioned() && command.getBaseCommand().equalsIgnoreCase(commandName);
+        return (command.isMentioned() || command.getChat().getType() == ChatType.PRIVATE) && command.getBaseCommand().equalsIgnoreCase(commandName);
     }
 }
