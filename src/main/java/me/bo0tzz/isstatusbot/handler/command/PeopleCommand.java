@@ -22,9 +22,7 @@ public class PeopleCommand implements CommandHandler {
         ISSPeopleRequest.builder()
                 .callback(issPeople -> {
                             StringBuilder people = new StringBuilder("They are:\n");
-                            issPeople.getPeople().forEach(person -> {
-                                people.append(String.format("%s\n", person.getName()));
-                            });
+                            issPeople.getPeople().forEach(person -> people.append(String.format("%s\n", person.getName())));
                             registry.getMain().getTelegramBot().perform(
                                     SendText.builder()
                                             .chatId(command.getChat().getChatId())
