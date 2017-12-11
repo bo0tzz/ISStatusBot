@@ -27,6 +27,7 @@ public class PeopleCommand implements CommandHandler {
                                     SendText.builder()
                                             .chatId(command.getChat().getChatId())
                                             .text(String.format("There are currently %d people in the ISS. ", issPeople.getNumber()  ) + people.toString())
+                                            .errorHandler(System.out::println)
                                             .build());
                         }
                 ).build().perform();

@@ -39,7 +39,9 @@ public class InlineQueryEventHandler implements EventHandler<InlineQueryEvent> {
                                                     ).build()
                                             ).build()
                                     ).build()
-                            ).build()
+                            )
+                            .errorHandler(System.out::println)
+                            .build()
                     )
                 )
                 .build().perform();
