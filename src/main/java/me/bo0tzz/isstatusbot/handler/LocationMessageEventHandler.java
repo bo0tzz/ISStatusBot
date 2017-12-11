@@ -8,6 +8,7 @@ import me.bo0tzz.isstatusbot.util.TimezoneMapper;
 import me.bo0tzz.opennotify4j.bean.Pass;
 import me.bo0tzz.opennotify4j.requests.ISSPassRequest;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -38,10 +39,10 @@ public class LocationMessageEventHandler implements EventHandler<LocationMessage
                     String formattedTime = Instant.ofEpochSecond(pass.getRisetime())
                             .atZone(timeZone)
                             .format(formatter);
-                    long fromNow = pass.getRisetime() - (System.currentTimeMillis() / 1000);
+                    Duration d = Duration.between(Instant.now(), Instant.ofEpochSecond(pass.getRisetime()));
                     String out = String.format("The next pass by the ISS at your location will be %02d hours and %02d minutes from now at %s and last for %02d minutes and %02d seconds.",
-                            fromNow / 60,
-                            fromNow % 60,
+                            d.getSeconds() / 60,
+                            d.getSeconds() % 60,
                             formattedTime,
                             pass.getDuration() / 60,
                             pass.getDuration() % 60);
