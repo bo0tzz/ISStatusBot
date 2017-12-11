@@ -31,6 +31,7 @@ public class InlineQueryEventHandler implements EventHandler<InlineQueryEvent> {
                                     .longtitude(issLocation.getLocation().getLongitude())
                                     .latitude(issLocation.getLocation().getLatitude())
                                     .livePeriod(1800)
+                                    .id(Integer.toString(issLocation.hashCode()))
                                     .replyMarkup(InlineKeyboardMarkup.builder()
                                             .keyboard(InlineKeyboardRow.builder()
                                                     .button(InlineKeyboardButton.builder()
