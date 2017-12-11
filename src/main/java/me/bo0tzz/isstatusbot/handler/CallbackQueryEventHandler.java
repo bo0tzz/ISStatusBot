@@ -21,7 +21,7 @@ public class CallbackQueryEventHandler implements EventHandler<CallbackQueryEven
         registry.getMain().getTelegramBot().perform(EditMessageReplyMarkup.builder()
                 .inlineMessageId(event.getQuery().getInlineMessageId())
                 .replyMarkup(null)
-                .errorHandler(System.out::println)
+                .errorHandler(e -> System.out.println(e.getDescription()))
                 .build()
         );
         updateManager.addMessage(new LiveLocationMessage(

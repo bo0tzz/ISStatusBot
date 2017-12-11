@@ -38,7 +38,7 @@ public class LocationCommand implements CommandHandler {
                                             null,
                                             System.currentTimeMillis() + 30 * 60 * 1000 // Run for 30 minutes
                                     )))
-                                .errorHandler(System.out::println)
+                                .errorHandler(e -> System.out.println(e.getDescription()))
                                 .build()
                     ))
                 .build().perform();

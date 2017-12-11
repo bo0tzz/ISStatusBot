@@ -28,7 +28,7 @@ public class LiveLocationUpdater implements Runnable {
                                 .inlineMessageId(liveLocationMessage.getInlineMessageId())
                                 .latitude(issLocation.getLocation().getLatitude())
                                 .longitude(issLocation.getLocation().getLongitude())
-                                .errorHandler(System.out::println)
+                                .errorHandler(e -> System.out.println(e.getDescription()))
                                 .build()))
                 ).build().perform();
     }

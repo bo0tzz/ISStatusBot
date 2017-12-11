@@ -50,7 +50,7 @@ public class LocationMessageEventHandler implements EventHandler<LocationMessage
                     registry.getMain().getTelegramBot().perform(SendText.builder()
                             .chatId(locationMessageEvent.getMessage().getChat().getChatId())
                             .text(out)
-                            .errorHandler(System.out::println)
+                            .errorHandler(e -> System.out.println(e.getDescription()))
                             .build());
                 })
                 .build()
