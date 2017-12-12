@@ -28,7 +28,7 @@ public class InlineQueryEventHandler implements EventHandler<InlineQueryEvent> {
                     registry.getMain().getTelegramBot().perform(
                         AnswerInlineQuery.builder()
                             .addResult(InlineResultLocation.builder()
-                                    .longtitude(issLocation.getLocation().getLongitude())
+                                    .longitude(issLocation.getLocation().getLongitude())
                                     .latitude(issLocation.getLocation().getLatitude())
                                     .livePeriod(1800)
                                     .id(Integer.toString(issLocation.hashCode()))
