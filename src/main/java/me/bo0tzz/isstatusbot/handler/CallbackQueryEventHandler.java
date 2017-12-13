@@ -2,6 +2,7 @@ package me.bo0tzz.isstatusbot.handler;
 
 import com.jtelegram.api.events.EventHandler;
 import com.jtelegram.api.events.inline.keyboard.CallbackQueryEvent;
+import com.jtelegram.api.requests.inline.AnswerCallbackQuery;
 import com.jtelegram.api.requests.message.edit.EditMessageReplyMarkup;
 import me.bo0tzz.isstatusbot.live.LiveLocationMessage;
 import me.bo0tzz.isstatusbot.live.LiveLocationUpdateManager;
@@ -30,6 +31,10 @@ public class CallbackQueryEventHandler implements EventHandler<CallbackQueryEven
                 event.getQuery().getInlineMessageId(),
                 System.currentTimeMillis() + 30 * 60 * 1000 // Go for 30 minutes
         ));
+        registry.getMain().getTelegramBot().perform(
+                AnswerCallbackQuery.builder()
+                    .queryId(event.getQuery().getId())
+                    .build());
     }
 
 }
