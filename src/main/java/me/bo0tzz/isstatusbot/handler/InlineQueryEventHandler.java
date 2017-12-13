@@ -37,6 +37,7 @@ public class InlineQueryEventHandler implements EventHandler<InlineQueryEvent> {
                                             .keyboard(InlineKeyboardRow.builder()
                                                     .button(InlineKeyboardButton.builder()
                                                             .label("Start live updates (30 minutes)")
+                                                            .callbackData("startlive")
                                                             .build()
                                                     ).build()
                                             ).build()
