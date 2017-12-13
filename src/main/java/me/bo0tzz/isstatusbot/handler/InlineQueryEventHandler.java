@@ -44,6 +44,7 @@ public class InlineQueryEventHandler implements EventHandler<InlineQueryEvent> {
                                     ).build()
                             )
                             .queryId(event.getQuery().getId())
+                            .cacheTime(30)
                             .errorHandler(e -> System.out.println(e.getDescription()))
                             .build()
                     )
